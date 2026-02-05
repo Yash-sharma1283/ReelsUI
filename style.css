@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(to right, black, rgb(23, 22, 22));
+}
+main section {
+  height: 100%;
+  width: 500px;
+  margin: auto;
+  padding: 20px;
+}
+main section .reels {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+main section .reels::-webkit-scrollbar {
+  display: none;
+}
+main section .reels .reel {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+main section .reels .reel video {
+  -o-object-fit: cover;
+     object-fit: cover;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+}
+main section .reels .reel .bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  padding: 30px 20px;
+  background: transparent;
+  position: absolute;
+  bottom: 0;
+}
+main section .reels .reel .bottom .user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+main section .reels .reel .bottom .user button {
+  background-color: transparent;
+  padding: 2px 4px;
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 2px;
+  border: 1px solid white;
+  cursor: pointer;
+}
+main section .reels .reel .bottom .user img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+main section .reels .reel .bottom .user h4 {
+  color: black;
+  font-size: 20px;
+}
+main section .reels .reel .bottom .user button {
+  padding: 3px 5px;
+}
+main section .reels .reel .bottom .caption h4 {
+  color: black;
+  font-size: 25px;
+}
+main section .reels .reel .right {
+  width: 80px;
+  position: absolute;
+  right: 0;
+  bottom: 5%;
+  padding: 20px;
+}
+main section .reels .reel .right i {
+  font-size: 35px;
+  padding: 10px;
+  font-weight: 100;
+  cursor: pointer;
+}
+main section .reels .reel .right h4 {
+  font-size: 35px;
+  padding: 10px;
+  font-weight: 100;
+  cursor: pointer;
+}
+main section .reels .reel .right div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+main section .reels .reel .right .love {
+  color: red;
+}/*# sourceMappingURL=style.css.map */
