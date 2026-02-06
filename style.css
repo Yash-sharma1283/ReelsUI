@@ -41,6 +41,26 @@ main section .reels .reel {
   scroll-snap-align: start;
   scroll-snap-stop: always;
 }
+main section .reels .reel .mute {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+main section .reels .reel .mute:active {
+  scale: 0.95;
+}
+main section .reels .reel .mutemute i {
+  font-size: 22px;
+  pointer-events: none;
+}
 main section .reels .reel video {
   -o-object-fit: cover;
      object-fit: cover;
@@ -78,41 +98,47 @@ main section .reels .reel .bottom .user img {
   border-radius: 50%;
 }
 main section .reels .reel .bottom .user h4 {
-  color: black;
+  color: white;
   font-size: 20px;
+  font-weight: 100;
 }
 main section .reels .reel .bottom .user button {
   padding: 3px 5px;
 }
 main section .reels .reel .bottom .caption h4 {
-  color: black;
+  color: white;
   font-size: 25px;
+  font-weight: 100;
 }
 main section .reels .reel .right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 80px;
   position: absolute;
   right: 0;
   bottom: 5%;
   padding: 20px;
+  text-align: center;
 }
-main section .reels .reel .right i {
-  font-size: 35px;
-  padding: 10px;
-  font-weight: 100;
-  cursor: pointer;
-}
+main section .reels .reel .right i,
 main section .reels .reel .right h4 {
   font-size: 35px;
   padding: 10px;
   font-weight: 100;
   cursor: pointer;
 }
+main section .reels .reel .right h4,
+main section .reels .reel .right h6 {
+  pointer-events: none;
+}
 main section .reels .reel .right div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  width: 50px;
+  cursor: pointer;
 }
 main section .reels .reel .right .love {
   color: red;

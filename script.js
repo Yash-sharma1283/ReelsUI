@@ -1,5 +1,6 @@
 const reel = [
   {
+    isMuted: true,
     username: "travelwithriya",
     likeCount: 12450,
     isLiked: false,
@@ -8,9 +9,10 @@ const reel = [
     video: "./vid1.mp4",
     userProfile: "https://randomuser.me/api/portraits/women/11.jpg",
     shareCount: 210,
-    isFollowed: true
+    isFollowed: true,
   },
   {
+    isMuted: true,
     username: "fit_ankit",
     likeCount: 9870,
     isLiked: true,
@@ -19,9 +21,10 @@ const reel = [
     video: "./vid2.mp4",
     userProfile: "https://randomuser.me/api/portraits/men/21.jpg",
     shareCount: 98,
-    isFollowed: false
+    isFollowed: false,
   },
   {
+    isMuted: true,
     username: "foodie_tanya",
     likeCount: 22340,
     isLiked: false,
@@ -30,9 +33,10 @@ const reel = [
     video: "./vid3.mp4",
     userProfile: "https://randomuser.me/api/portraits/women/31.jpg",
     shareCount: 430,
-    isFollowed: true
+    isFollowed: true,
   },
   {
+    isMuted: true,
     username: "techwithrohit",
     likeCount: 7650,
     isLiked: true,
@@ -41,9 +45,10 @@ const reel = [
     video: "./vid4.mp4",
     userProfile: "https://randomuser.me/api/portraits/men/41.jpg",
     shareCount: 180,
-    isFollowed: true
+    isFollowed: true,
   },
   {
+    isMuted: true,
     username: "dance_with_megha",
     likeCount: 18900,
     isLiked: false,
@@ -52,20 +57,22 @@ const reel = [
     video: "./vid5.mp4",
     userProfile: "https://randomuser.me/api/portraits/women/51.jpg",
     shareCount: 390,
-    isFollowed: false
+    isFollowed: false,
   },
   {
+    isMuted: true,
     username: "daily_memes_raj",
     likeCount: 30210,
     isLiked: true,
     commentCount: 890,
     caption: "When assignment deadline is tomorrow 😂",
-     video: "./vid1.mp4",
+    video: "./vid1.mp4",
     userProfile: "https://randomuser.me/api/portraits/men/61.jpg",
     shareCount: 720,
-    isFollowed: true
+    isFollowed: true,
   },
   {
+    isMuted: true,
     username: "natureclicks",
     likeCount: 15890,
     isLiked: false,
@@ -74,9 +81,10 @@ const reel = [
     video: "./vid2.mp4",
     userProfile: "https://randomuser.me/api/portraits/women/71.jpg",
     shareCount: 160,
-    isFollowed: false
+    isFollowed: false,
   },
   {
+    isMuted: true,
     username: "codingwithdev",
     likeCount: 6450,
     isLiked: true,
@@ -85,9 +93,10 @@ const reel = [
     video: "./vid4.mp4",
     userProfile: "https://randomuser.me/api/portraits/men/81.jpg",
     shareCount: 75,
-    isFollowed: true
+    isFollowed: true,
   },
   {
+    isMuted: true,
     username: "makeupbyalia",
     likeCount: 27400,
     isLiked: false,
@@ -96,9 +105,10 @@ const reel = [
     video: "./vid3.mp4",
     userProfile: "https://randomuser.me/api/portraits/women/91.jpg",
     shareCount: 310,
-    isFollowed: true
+    isFollowed: true,
   },
   {
+    isMuted: true,
     username: "carlover_kunal",
     likeCount: 11200,
     isLiked: true,
@@ -107,23 +117,31 @@ const reel = [
     video: "./vid5.mp4",
     userProfile: "https://randomuser.me/api/portraits/men/15.jpg",
     shareCount: 140,
-    isFollowed: false
-  }
+    isFollowed: false,
+  },
 ];
-let sum='';
-reel.forEach(function(elem) {
-    sum = sum + ` <div class="reel">
-           <video autoplay loop muted src="${elem.video}"></video>
+let allreelss = document.querySelector(".reels");
+
+let isMuted = true;
+
+function addData() {
+  let sum = "";
+  reel.forEach(function (elem, idx) {
+    sum =
+      sum +
+      ` <div class="reel">
+           <video autoplay loop ${elem.isMuted ? "muted" : ""} src="${elem.video}"></video>
+           <div class="mute" id =${idx}>${elem.isMuted ? '<i class="ri-volume-mute-line">' : '<i class="ri-volume-up-fill"></i>'}</i></div>
             <div class="bottom">
                <div class="user"><img src="${elem.userProfile}" alt="">
                 <h4>${elem.username}</h4>
-                <button>${elem.isFollowed?'Unfollow':'Follow'}</button>
+                <button id =${idx} class = 'Follow'>${elem.isFollowed ? "Unfollow" : "Follow"}</button>
             </div> 
             <div class="caption"><h4>${elem.caption}</h4> </div>
             </div> 
-             <div class="right">
-               <div class="like"> 
-                <h4 class = "likeicon"><i ${elem.isLiked?'<i class=" love ri-heart-3-fill"></i>' : '<i class="ri-heart-3-line"></i>'}</h4>
+             <div   class="right">
+               <div id = ${idx} class="like"> 
+                <h4 class = "likeicon"><i ${elem.isLiked ? '<i class=" love ri-heart-3-fill"></i>' : '<i class="ri-heart-3-line"></i>'}</h4>
                 <h6>${elem.likeCount}</h6>
             </div>
              <div class="comment"> 
@@ -140,10 +158,37 @@ reel.forEach(function(elem) {
             </div>
             </div>
             </div> `;
-   
-    
-    
-});
-let allreelss = document.querySelector('.reels');
-allreelss.innerHTML=sum;
+  });
+  allreelss.innerHTML = sum;
+}
 
+addData();
+
+allreelss.addEventListener("click", function (dets) {
+  if (dets.target.className === "like") {
+    if (reel[dets.target.id].isLiked) {
+      reel[dets.target.id].likeCount--;
+      reel[dets.target.id].isLiked = false;
+    } else {
+      reel[dets.target.id].likeCount++;
+      reel[dets.target.id].isLiked = true;
+    }
+    addData();
+  }
+  if (dets.target.className == "Follow") {
+    if (reel[dets.target.id].isFollowed) {
+      reel[dets.target.id].isFollowed = false;
+    } else {
+      reel[dets.target.id].isFollowed = true;
+    }
+    addData();
+  }
+  if (dets.target.className == "mute") {
+    if (!reel[dets.target.id].isMuted) {
+      reel[dets.target.id].isMuted = true;
+    } else {
+      reel[dets.target.id].isMuted = false;
+    }
+    addData();
+  }
+});
